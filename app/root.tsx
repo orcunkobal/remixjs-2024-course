@@ -1,3 +1,4 @@
+import { LinksFunction, LoaderFunction } from "@remix-run/node";
 import {
 	Link,
   Links,
@@ -6,6 +7,37 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+
+import appCss from './app.css?url'
+
+export const links:LinksFunction = () => {
+	return [
+		{
+			rel:'icon',
+			type:'image/x-icon',
+			href:'/favicon.ico'
+		},
+		{
+			rel:'stylesheet',
+			href: appCss
+		},
+		{
+			rel:'prefetch',
+			as:'image',
+			href:'/assets/norvey.jpg'
+		}
+	]
+}
+
+export const loader:LoaderFunction = () => {
+	return {
+		config:{},
+		menu:{},
+		meta:{
+			keywords:"root,remixjs"
+		}
+	}
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,6 +51,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
 		<div style={{display:'flex',columnGap:20,backgroundColor:'#f1f1f1',marginBottom:30,padding:10}}>
 			<Link to="/">Anasayfa</Link>
+			<Link to="/hakkimizda/">Hakkımızda</Link>
+			<Link to="/kategori/">Kategori</Link>
+			<Link to="/kategori/123/">Kategori Detay</Link>
 		</div>
         {children}
         <ScrollRestoration />
