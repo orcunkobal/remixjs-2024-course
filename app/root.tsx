@@ -1,4 +1,4 @@
-import { LinksFunction } from "@remix-run/node";
+import { ActionFunction, LinksFunction } from "@remix-run/node";
 import {
 	Link,
 	Links,
