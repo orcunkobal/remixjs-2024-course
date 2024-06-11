@@ -1,4 +1,4 @@
-import { LinksFunction, LoaderFunction } from "@remix-run/node";
+import { LinksFunction, LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
 import {
 	Link,
   Links,
@@ -44,6 +44,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   );
+}
+
+export const loader:LoaderFunctionArgs = async() => {
+	return {rootLoaderData:{}}
+}
+
+export const shouldRevalidate = (context) => {
+	const formData = context.formData
+	const _action = formData?.get("_action")
+	if( _action == "kullanici_ekle" ){
+		return false
+	}
+	return context.defaultShouldRevalidate
 }
 
 export default function App() {
