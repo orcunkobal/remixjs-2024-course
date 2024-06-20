@@ -2,7 +2,7 @@
 export default function Index() {
 	return (
 		<div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8", display: "flex",flexDirection:"column" }}>
-			anasayfa
+			<div className="text-4xl">Anasayfa</div>
 		</div>
 	);
 }
