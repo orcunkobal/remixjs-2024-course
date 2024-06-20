@@ -38,8 +38,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			<body>
 				<div style={{ display: 'flex', columnGap: 20, backgroundColor: '#f1f1f1', marginBottom: 30, padding: 10 }}>
 					<Link to="/">Anasayfa</Link>
-					<Link to="/hakkimizda/" prefetch="intent">Hakkımızda (intent)</Link>
-					<Link to="/hakkimizda/" prefetch="render">Hakkımızda (render)</Link>
 				</div>
 				{children}
 				<ScrollRestoration />
