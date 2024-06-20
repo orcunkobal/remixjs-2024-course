@@ -27,16 +27,6 @@ export const links: LinksFunction = () => {
 
 
 export function Layout({ children }: { children: React.ReactNode }) {
-	const matches = useMatches()
-	const breadCrumbInfo = matches.filter(item => {
-		if( item.handle?.breadcrumb ){
-			return item
-		}else{
-			return null
-		}
-	})
-	console.log(breadCrumbInfo);
-	
 	return (
 		<html lang="en">
 			<head>
@@ -48,17 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			<body>
 				<div style={{ display: 'flex', columnGap: 20, backgroundColor: '#f1f1f1', marginBottom: 30, padding: 10 }}>
 					<Link to="/">Anasayfa</Link>
-					<Link to="/categories/">Kategoriler</Link>
 				</div>
-				{breadCrumbInfo.length > 1 && <div style={{backgroundColor:"#f1f1f1",display:"flex",columnGap:10,padding:10,fontWeight:"bold",fontSize:16}}>
-					{breadCrumbInfo.map((item,position) => {
-						const isLastItem = position == breadCrumbInfo.length - 1
-						const breadCrumbElement = item.handle.breadcrumb(item.data,isLastItem)
-						if( !isLastItem )
-							return <><div key={position}>{breadCrumbElement}</div><div>/</div></>
-						return <div key={position}>{breadCrumbElement}</div>
-					})}
-					</div>}
 				{children}
 				<ScrollRestoration />
 				<Scripts />
