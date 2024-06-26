@@ -3,6 +3,7 @@ import {
 	Link,
 	Links,
 	Meta,
+	NavLink,
 	Outlet,
 	Scripts,
 	ScrollRestoration,
@@ -36,8 +37,28 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body>
-				<div style={{ display: 'flex', columnGap: 20, backgroundColor: '#f1f1f1', marginBottom: 30, padding: 10 }}>
-					<Link to="/">Anasayfa</Link>
+				<div id="navbar" style={{ display: 'flex', columnGap: 20, backgroundColor: '#f1f1f1', marginBottom: 30, padding: 10 }}>
+					<NavLink to="/" style={({isActive}) => isActive ? {fontWeight:"bold"} : {}}>Anasayfa</NavLink>
+					<NavLink to="/hakkimizda" end className={({isActive}) => isActive ? "font-black" : ""}>
+						{({isPending}) => (
+							<span className={isPending ? "text-red-800 animate-spin" : ""}>Hakkımızda {isPending && "yükleniyor"}</span>
+						)}
+					</NavLink>
+					<NavLink to="/hakkimizda/tarihce" className={({isActive}) => isActive ? "font-black" : ""}>
+						{({isPending}) => (
+							<span className={isPending ? "text-red-800 animate-spin" : ""}>Tarihçe {isPending && "yükleniyor"}</span>
+						)}
+					</NavLink>
+					<NavLink to="/iletisim" >
+						{({isActive}) => (
+							<span className={isActive ? "font-bold" : ""}>İletişim</span>
+						)}
+					</NavLink>
+					<NavLink to="/DuYarli-LiNk" caseSensitive>
+						{({isActive}) => (
+							<span>Duyarlı Link {isActive ? "aktif" : "pasif"}</span>
+						)}
+					</NavLink>
 				</div>
 				{children}
 				<ScrollRestoration />
