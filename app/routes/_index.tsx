@@ -1,7 +1,7 @@
 
 export default function Index() {
 	return (
-		<div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8", display: "flex",flexDirection:"column" }}>
+		<div>
 			<div className="text-4xl">Anasayfa</div>
 		</div>
 	);
